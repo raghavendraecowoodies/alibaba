@@ -1,0 +1,10 @@
+__pycache__/
+*.log
+*.png
+*.html
+.git/
+.gemini/
+.idea/
+.vscode/
+venv/
+env/

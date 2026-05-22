@@ -1,0 +1,27 @@
+# Sensitive credentials and session cookies
+cookies.json
+instagram-credentials.json
+
+# Local logs and diagnostic/debugging files
+*.log
+*.png
+*.html
+
+# Python build and workspace files
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.ipynb_checkpoints/
+
+# Virtual environments
+venv/
+env/
+.env
+
+# System and IDE folders
+.gemini/
+.idea/
+.vscode/
+Thumbs.db
+.DS_Store
