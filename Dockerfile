@@ -17,6 +17,8 @@ RUN apt-get update && apt-get install -y \
     libgtk-3-0 \
     libxss1 \
     libasound2 \
+    fonts-liberation \
+    xdg-utils \
     && rm -rf /var/lib/apt/lists/*
 
 # Download and install Google Chrome Stable directly from Google
