@@ -15,19 +15,23 @@ import undetected_chromedriver as uc
 # --- Configuration ---
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 LOG_FILE = os.path.join(BASE_DIR, "sheet_alibaba_inquiry.log")
-COOKIES_FILE = os.path.join(BASE_DIR, "cookies.json")
 
-# Fallback pathing: check environment variables first, then local workspace, then default Windows path
-CREDENTIALS_FILE = os.getenv("GOOGLE_APPLICATION_CREDENTIALS")
+# COOKIES_FILE: check environment variable first, then fallback to local directory
+COOKIES_FILE = os.getenv("COOKIES_FILE")
+if not COOKIES_FILE:
+    COOKIES_FILE = os.path.join(BASE_DIR, "cookies.json")
+
+# CREDENTIALS_FILE: check environment variable first (either CREDENTIALS_FILE or GOOGLE_APPLICATION_CREDENTIALS)
+CREDENTIALS_FILE = os.getenv("CREDENTIALS_FILE") or os.getenv("GOOGLE_APPLICATION_CREDENTIALS")
 if not CREDENTIALS_FILE or not os.path.exists(CREDENTIALS_FILE):
-    default_win_path = r"C:\Users\DELL\Desktop\linkedin_outreach\instagram-credentials.json"
     local_path = os.path.join(BASE_DIR, "instagram-credentials.json")
-    if os.path.exists(default_win_path):
-        CREDENTIALS_FILE = default_win_path
-    elif os.path.exists(local_path):
+    default_win_path = r"C:\Users\DELL\Desktop\linkedin_outreach\instagram-credentials.json"
+    if os.path.exists(local_path):
         CREDENTIALS_FILE = local_path
-    else:
+    elif os.path.exists(default_win_path):
         CREDENTIALS_FILE = default_win_path
+    else:
+        CREDENTIALS_FILE = local_path
 
 SPREADSHEET_ID = "1W5GG30XAlp_qdm5cUwA53LFMnwItS2hG1Rbq7b9CZgM"
 INQUIRY_MESSAGE = "what is the cost of this product"

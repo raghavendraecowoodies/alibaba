@@ -34,10 +34,8 @@ WORKDIR /app
 COPY requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
 
-# Copy application files, credentials, and configuration
+# Copy application files and configuration
 COPY sheet_alibaba_inquiry.py .
-COPY cookies.json .
-COPY instagram-credentials.json .
 COPY entrypoint.sh .
 
 # Ensure entrypoint.sh is executable and has Unix line endings
