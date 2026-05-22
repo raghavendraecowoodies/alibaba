@@ -91,6 +91,12 @@ def start_browser():
         options.add_argument("--no-sandbox")
         options.add_argument("--disable-dev-shm-usage")
         options.add_argument("--disable-gpu")
+        options.add_argument("--disable-extensions")
+        options.add_argument("--disable-images")
+        options.add_argument("--blink-settings=imagesEnabled=false")
+        options.add_argument("--memory-pressure-off")
+        options.add_argument("--max_old_space_size=256")
+        options.add_argument("--single-process")
         if os.getenv("CHROME_HEADLESS"):
             options.add_argument("--headless=new")
             
