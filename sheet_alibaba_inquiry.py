@@ -12,6 +12,17 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 import undetected_chromedriver as uc
 
+# --- Bootstrap: write secrets from env vars to disk (used in Docker) ---
+_creds = os.environ.get('CREDENTIALS_JSON')
+if _creds:
+    with open('/app/instagram-credentials.json', 'w') as f:
+        f.write(_creds)
+
+_cookies = os.environ.get('COOKIES_JSON')
+if _cookies:
+    with open('/app/cookies.json', 'w') as f:
+        f.write(_cookies)
+
 # --- Configuration ---
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 LOG_FILE = os.path.join(BASE_DIR, "sheet_alibaba_inquiry.log")
