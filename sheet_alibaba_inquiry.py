@@ -96,7 +96,7 @@ def start_browser():
             
     try:
         if os.getenv("DOCKER_ENV") or sys.platform.startswith("linux"):
-            driver = uc.Chrome(options=options)
+            driver = uc.Chrome(options=options, version_main=148)
         else:
             driver = uc.Chrome(options=options, version_main=148)
     except Exception as e:
